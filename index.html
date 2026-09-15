@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuaca Hari Ini</title>
+<meta name="description" content="Aplikasi cuaca lengkap: pencarian kota, lokasi otomatis, prakiraan per jam, 7 hari, matahari terbit/terbenam, dan indeks UV — dibuat oleh Syifaul Askia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body id="appBody">
+<div class="ambient">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<main class="card">
+  <header>
+    <p class="eyebrow">Cuaca &mdash; Real-time</p>
+    <h1>Cek Cuaca</h1>
+  </header>
+
+  <form id="searchForm" class="search-row">
+    <input type="text" id="cityInput" placeholder="Cari nama kota..." autocomplete="off" required>
+    <button type="submit" class="btn-icon" aria-label="Cari">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </button>
+    <button type="button" id="locateBtn" class="btn-icon" aria-label="Gunakan lokasi saat ini">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="6"/></svg>
+    </button>
+  </form>
+
+  <div id="suggestions" class="suggestions hidden"></div>
+
+  <div id="statusMsg" class="status-msg">Cari kota atau gunakan lokasi kamu untuk mulai.</div>
+
+  <section id="weatherView" class="weather-view hidden">
+    <div class="unit-toggle">
+      <button class="toggle-btn active" data-unit="c">&deg;C</button>
+      <button class="toggle-btn" data-unit="f">&deg;F</button>
+    </div>
+
+    <div class="current">
+      <p id="locationName" class="location-name">&mdash;</p>
+      <div class="temp-row">
+        <span id="currentIcon" class="weather-icon">&#9728;&#65039;</span>
+        <span id="currentTemp" class="current-temp">&mdash;</span>
+      </div>
+      <p id="currentDesc" class="current-desc">&mdash;</p>
+      <p id="feelsLike" class="feels-like"></p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <span class="stat-label">Kelembapan</span>
+        <span id="humidity" class="stat-value">&mdash;</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Angin</span>
+        <span id="wind" class="stat-value">&mdash;</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Indeks UV</span>
+        <span id="uvIndex" class="stat-value">&mdash;</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Peluang Hujan</span>
+        <span id="rainChance" class="stat-value">&mdash;</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Tekanan Udara</span>
+        <span id="pressure" class="stat-value">&mdash;</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Matahari</span>
+        <span id="sunTimes" class="stat-value small">&mdash;</span>
+      </div>
+    </div>
+
+    <div class="forecast-block">
+      <h3>Per Jam &mdash; 24 Jam ke Depan</h3>
+      <div id="hourlyList" class="hourly-list"></div>
+    </div>
+
+    <div class="forecast-block">
+      <h3>Prakiraan 7 Hari</h3>
+      <div id="forecastList" class="forecast-list"></div>
+    </div>
+  </section>
+
+  <div class="history-block">
+    <div class="history-head">
+      <h3>Pencarian Terakhir</h3>
+      <button id="clearHistory" class="link-btn">Hapus</button>
+    </div>
+    <div id="historyChips" class="history-chips"></div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
